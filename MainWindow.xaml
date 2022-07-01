@@ -1,0 +1,46 @@
+﻿<Window x:Class="SinusPong.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SinusPong"
+        mc:Ignorable="d"
+        Title="Sinus Pong" Height="386" Width="690"
+        PreviewKeyDown="Window_PreviewKeyDown"
+        PreviewKeyUp="Window_PreviewKeyUp">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" x:Name="Spielfeld">
+            <local:Schläger  x:Name="links" HorizontalAlignment="Left" VerticalAlignment="Top" Height="70" Width="15" Margin="0,104,0,0"/>
+
+            <local:Ball x:Name="ball" BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="10" Height="10" Margin="130,205,0,0" CornerRadius="100,100,100,100" Background="Black"/>
+            <local:Schläger x:Name="rechts" Height="70" Width="15" Margin="0,118,0,0" HorizontalAlignment="Right" VerticalAlignment="Top" />
+        </Grid>
+        <GroupBox Header="Einstellung" Grid.Column="1">
+            <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Label Foreground="Red" Name="LabelPunkteLinks"></Label>
+                    <Label Foreground="Blue" Name="LabelPunkteRechts"></Label>
+                </StackPanel>
+
+                <Label>Amplitude</Label>
+                <Slider x:Name="Amplitude" Minimum="20" Value="50" Maximum="100" Focusable="False"></Slider>
+                <Label>Periode (Für die Variabilität beim Spielen)</Label>
+                <Slider x:Name="Periode" Minimum="2" Value="3" Maximum="6" Focusable="False"></Slider>
+                <Label>Achsenabschnitt</Label>
+                <Slider x:Name="Achsenabschnitt" Minimum="-100" Maximum="100" Focusable="False"/>
+                <Label>Geschwindigkeit (Erhöht sich automatisch => Schwierigkeit)</Label>
+                <Slider x:Name="Geschwindigkeit" Minimum="2" Value="2" Maximum="4" Focusable="False"/>
+                <Label x:Name="SinusLabel"></Label>
+                <StackPanel Orientation="Horizontal" Margin="5,5,0,0" >
+                    <Button Margin="0,0,5,0" Click="Button_Click">Steuerung</Button>
+                    <Button Click="Button_Click_1">Über</Button>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+    </Grid>
+</Window>
